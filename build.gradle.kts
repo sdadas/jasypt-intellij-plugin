@@ -23,13 +23,14 @@ plugins {
 group = properties("pluginGroup")
 version = properties("pluginVersion")
 
-// Configure project's dependencies
 repositories {
     mavenCentral()
     jcenter()
 }
+
 dependencies {
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.16.0")
+    implementation("org.jasypt:jasypt:1.9.3")
 }
 
 // Configure gradle-intellij-plugin plugin.

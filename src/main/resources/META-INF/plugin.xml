@@ -1,19 +1,27 @@
 <idea-plugin>
-    <id>com.github.sdadas.jasyptintellijplugin</id>
-    <name>jasypt-intellij-plugin</name>
-    <vendor>sdadas</vendor>
+    <id>com.sdadas.jasypt</id>
+    <name>Spring Boot Jasypt</name>
+    <vendor>Sławomir Dadas</vendor>
 
     <!-- Product and plugin compatibility requirements -->
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
 
-    <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.sdadas.jasyptintellijplugin.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.sdadas.jasyptintellijplugin.services.MyProjectService"/>
-    </extensions>
+    <project-components>
+        <component>
+            <implementation-class>com.sdadas.jasypt.components.EncryptorStorage</implementation-class>
+        </component>
+    </project-components>
 
-    <applicationListeners>
-        <listener class="com.github.sdadas.jasyptintellijplugin.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
+    <actions>
+        <action id="com.sdadas.jasypt.actions.EncryptionAction" class="com.sdadas.jasypt.actions.EncryptionAction"
+                text="Encrypt / Decrypt Values">
+            <add-to-group group-id="GenerateGroup" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl BACK_SLASH"/>
+        </action>
+        <action id="com.sdadas.jasypt.actions.EncryptionDefaultAction"
+                class="com.sdadas.jasypt.actions.EncryptionDefaultAction" text="Encrypt / Decrypt Values">
+            <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl BACK_SLASH"/>
+        </action>
+    </actions>
 </idea-plugin>
