@@ -17,7 +17,7 @@ import java.util.Map;
 @State(name = "encryptor-state", storages = @Storage("encryptor.xml"))
 public class EncryptorStorage implements PersistentStateComponent<EncryptorStorage.State> {
 
-    private State state;
+    private State state = new State();
 
     @Override
     public @Nullable EncryptorStorage.State getState() {
