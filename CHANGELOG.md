@@ -1,7 +1,7 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# jasypt-intellij-plugin Changelog
+# Spring Boot Jasypt Changelog
 
-## [Unreleased]
+## [0.9.0]
 ### Added
-- Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
+- Initial version of the plugin providing basing encryption and decryption functionality.
