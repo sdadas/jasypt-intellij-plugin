@@ -29,7 +29,7 @@ repositories {
 }
 
 dependencies {
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.16.0")
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.17.0")
     implementation("org.jasypt:jasypt:1.9.3")
 }
 
