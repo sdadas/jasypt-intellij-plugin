@@ -81,7 +81,7 @@ public class EncryptionHelper {
         StringBuffer buffer = new StringBuffer();
         while(matcher.find()) {
             String replacement = replace.apply(matcher);
-            matcher.appendReplacement(buffer, replacement);
+            matcher.appendReplacement(buffer, Matcher.quoteReplacement(replacement));
         }
         matcher.appendTail(buffer);
         return buffer.toString();
