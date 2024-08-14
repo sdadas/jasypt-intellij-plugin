@@ -1,5 +1,6 @@
 package com.sdadas.jasypt.actions;
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
@@ -12,10 +13,8 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.sdadas.jasypt.components.EncryptorStorage;
 import com.sdadas.jasypt.dialogs.EncryptionDialog;
 import com.sdadas.jasypt.helper.EncryptionHelper;
-import com.sdadas.jasypt.helper.EncryptionHelperException;
 import com.sdadas.jasypt.model.EncryptionEntry;
 import com.sdadas.jasypt.model.EncryptionMode;
-import org.jasypt.exceptions.EncryptionOperationNotPossibleException;
 import org.jetbrains.annotations.NotNull;
 
 public class EncryptionAction extends AnAction {
@@ -46,6 +45,11 @@ public class EncryptionAction extends AnAction {
             rewriteFile(project, editor, state);
             setEncryptionEntry(file, storage, state);
         }
+    }
+
+    @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
     }
 
     private EncryptionEntry showDialog(EncryptionEntry state) {
